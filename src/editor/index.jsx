@@ -599,12 +599,12 @@ class MdEditor extends React.Component {
                 onMouseOver={() => this.handleScrollEle('html')}
                 onScroll={this.handlePreviewScroll}>
                 
-                <HtmlRender html={html} className={this.config.htmlClass} ref={node => this.nodeMdPreview = ReactDOM.findDOMNode(node)} />
+                <ContentRender source={this.props.value} ref={node => this.nodeMdPreview = ReactDOM.findDOMNode(node)} />
               </div>)
               : (<div className={'html-code-wrap'}
                 ref={node => this.nodeMdPreviewWraper = ReactDOM.findDOMNode(node)}
                 onScroll={this.handlePreviewScroll}>
-                <ContentRender ref={node => this.nodeMdPreview = ReactDOM.findDOMNode(node)} />
+                <HtmlRender html={html} className={this.config.htmlClass} ref={node => this.nodeMdPreview = ReactDOM.findDOMNode(node)} />
               </div>)
             }
           </section>
