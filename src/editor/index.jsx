@@ -465,6 +465,7 @@ class MdEditor extends React.Component {
   }
 
   render() {
+    const ContentRender = this.props.renderComponent;
     const { view, dropButton, fullScreen, table } = this.state
     const renderNavigation = () => {
       return view.menu &&
@@ -597,12 +598,13 @@ class MdEditor extends React.Component {
                 ref={node => this.nodeMdPreviewWraper = node}
                 onMouseOver={() => this.handleScrollEle('html')}
                 onScroll={this.handlePreviewScroll}>
+                
                 <HtmlRender html={html} className={this.config.htmlClass} ref={node => this.nodeMdPreview = ReactDOM.findDOMNode(node)} />
               </div>)
               : (<div className={'html-code-wrap'}
                 ref={node => this.nodeMdPreviewWraper = ReactDOM.findDOMNode(node)}
                 onScroll={this.handlePreviewScroll}>
-                <HtmlCode html={html} className={this.config.htmlClass} ref={node => this.nodeMdPreview = ReactDOM.findDOMNode(node)} />
+                <ContentRender ref={node => this.nodeMdPreview = ReactDOM.findDOMNode(node)} />
               </div>)
             }
           </section>
